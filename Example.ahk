@@ -4,7 +4,7 @@ SetBatchLines, -1
 OnExit, Exit
 ; Uncomment if Gdip.ahk is not in your standard library
 ;#Include, Gdip.ahk
-If !pToken := Gdip_Startup() {  ; Start Gdip
+If (!pToken := Gdip_Startup()) {
     MsgBox, 48, gdiplus error!, Gdiplus failed to start. Please ensure you have Gdip.ahk on your system.
     ExitApp
 }
