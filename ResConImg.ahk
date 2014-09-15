@@ -24,8 +24,8 @@ ResConImg(OriginalFile, NewWidth:="", NewHeight:="", NewName:="", NewExt:="", Ne
     , NewWidth := NewWidth ? NewWidth : Width
     , NewHeight := NewHeight ? NewHeight : Height
     , NewPath := (NewDir ? NewDir : SplitDir)                               ; NewPath := Directory
-		. "\" (NewName ? NewName : "Resized_" SplitNameNoExt)       	        ; \File name
-		. (SubStr(NewExt := NewExt ? NewExt                         	        ; .Extension (Adds the "." if required)
+		. "\" (NewName ? NewName : "Resized_" SplitNameNoExt)               ; \File name
+		. (SubStr(NewExt := NewExt ? NewExt                                 ; .Extension (Adds the "." if required)
 		: SplitExtension, 1, 1) = "." ? NewExt : "." NewExt)
     if (PreserveAspectRatio) {                                              ; Recalcultate NewWidth/NewHeight if required
         if ((r1 := Width / NewWidth) > (r2 := Height / NewHeight))          ; NewWidth/NewHeight will be treated as max width/height
