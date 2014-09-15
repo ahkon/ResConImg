@@ -24,9 +24,9 @@ ResConImg(OriginalFile, NewWidth:="", NewHeight:="", NewName:="", NewExt:="", Ne
     , NewWidth := NewWidth ? NewWidth : Width
     , NewHeight := NewHeight ? NewHeight : Height
     , NewPath := (NewDir ? NewDir : SplitDir)                               ; NewPath := Directory
-		. "\" (NewName ? NewName : "Resized_" SplitNameNoExt)               ; \File name
-		. (SubStr(NewExt := NewExt ? NewExt                                 ; .Extension (Adds the "." if required)
-		: SplitExtension, 1, 1) = "." ? NewExt : "." NewExt)
+        . "\" (NewName ? NewName : "Resized_" SplitNameNoExt)               ; \File name
+        . (SubStr(NewExt := NewExt ? NewExt                                 ; .Extension (Adds the "." if required)
+        : SplitExtension, 1, 1) = "." ? NewExt : "." NewExt)
     if (PreserveAspectRatio) {                                              ; Recalcultate NewWidth/NewHeight if required
         if ((r1 := Width / NewWidth) > (r2 := Height / NewHeight))          ; NewWidth/NewHeight will be treated as max width/height
             NewHeight := Height / r1
@@ -34,7 +34,7 @@ ResConImg(OriginalFile, NewWidth:="", NewHeight:="", NewName:="", NewExt:="", Ne
             NewWidth := Width / r2
     }
     pBitmap := Gdip_CreateBitmap(NewWidth, NewHeight                        ; Create a new bitmap
-		, (SubStr(NewExt, -2) = "bmp" && BitDepth = 24) ? 0x00021808 : 0x26200A)
+        , (SubStr(NewExt, -2) = "bmp" && BitDepth = 24) ? 0x00021808 : 0x26200A)
     , G := Gdip_GraphicsFromImage(pBitmap)                                  ; Get a pointer to the graphics of the bitmap
     , Gdip_SetSmoothingMode(G, 4)
     , Gdip_SetInterpolationMode(G, 7)
